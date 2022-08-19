@@ -1,0 +1,32 @@
+/* Don't remove this, it's padding/
+data {
+  a: word4{0};
+  b: word4{1};
+  c: word4{0};
+  i: word4{0};
+  o: word4{1000}
+  chr: word4{0}
+  pad: word4{0}
+}
+  For:
+  Memory.write(c,cell1,i+o);
+  c = a + b;
+  a = b;
+  b = c;
+  i = i + 1;
+  if i == 10 {
+    goto Break;
+  } else {
+    goto For;
+  }
+  Break:
+  i = 0;
+  SecondFor:
+  chr = Memory.read(cell1,i+o);
+  Memory.write(chr,cell2,2+pad+i);
+  pad = pad + 1;
+  Memory.write(44,cell2,2+pad+i);
+  pad = pad + 1;
+  Memory.write(32,cell2,2+pad+i);
+  i = i + 1;
+
